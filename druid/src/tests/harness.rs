@@ -69,8 +69,11 @@ impl<'a> TargetGuard<'a> {
     #[allow(dead_code)]
     pub fn into_raw(mut self) -> Vec<u8> {
         let mut raw_target = self.0.take().unwrap();
-        let raw_pixels: Vec<u8> = raw_target.raw_pixels(ImageFormat::RgbaPremul).unwrap();
-        raw_pixels
+        raw_target
+            .to_image_buf(ImageFormat::RgbaPremul)
+            .unwrap()
+            .raw_pixels()
+            .to_vec()
     }
 
     /// Saves the TargetGuard into a png
@@ -326,6 +329,6 @@ impl Drop for TargetGuard<'_> {
         let _ = self
             .0
             .take()
-            .map(|mut t| t.raw_pixels(piet::ImageFormat::RgbaPremul));
+            .map(|mut t| t.to_image_buf(piet::ImageFormat::RgbaPremul));
     }
 }
