@@ -43,7 +43,7 @@ pub use piet_common as piet;
 mod util;
 
 mod application;
-mod clipboard;
+pub mod clipboard;
 mod common_util;
 mod dialog;
 mod error;
