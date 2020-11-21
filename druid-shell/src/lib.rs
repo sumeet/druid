@@ -26,6 +26,7 @@
 //! - `DRUID_SHELL_DISABLE_X11_PRESENT`: if this is set and `druid-shell` is using the `x11`
 //! backend, it will avoid using the Present extension.
 
+#![feature(track_caller)]
 #![warn(broken_intra_doc_links)]
 #![allow(clippy::new_without_default)]
 #![deny(clippy::trivially_copy_pass_by_ref)]
